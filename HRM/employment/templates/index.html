@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="form-inline" action="new_applicant/">
+  <div class="form-group mx-sm-3 mb-2">
+    <button type="submit" class="btn btn-primary mb-2">New Applicant</button>
+  </div>
+</form>
+
+<div class="row">
+  {% for person in employment %}
+    <div class="card mb-3 mr-4" style="width: 22rem;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{ person.picture }}" class="card-img image-thumbnail" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ person.first_name}} {{ person.last_name}}</h5>
+            <p class="card-text">Gender: {{ person.gender }}</p>
+            <p class="card-text">DoB: {{ person.year_of_birth}}</p>
+            <p class="card-text">Education: {{ person.education_level }}</p>
+            <p class="card-text"><small class="text-muted">Request date: {{ person.date_of_completion }}</small></p>
+            <a href="employment_details/{{person.id}}" class="btn btn-primary">view details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<table class="table table-hover table-bordered mp-4">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Year of birth</th>
+      <th scope="col">Date of request</th>
+      <th scope="col">More Details</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for person in employment %}
+    <tr>
+      <th scope="row">{{ person.id }}</th>
+      <td>{{ person.first_name }}</td>
+      <td>{{ person.last_name }}</td>
+      <td>{{ person.year_of_birth }}</td>
+      <td>{{ person.date_of_completion }}</td>
+      <td>
+        <form class="form-inline" action="employment_details/{{ person.id }}">
+          <div class="form-group mx-sm-3 mb-2">
+            <button type="submit" class="btn btn-primary mb-2">view details</button>
+          </div>
+        </form>
+      </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

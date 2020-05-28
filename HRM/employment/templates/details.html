@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Application Details for {{ person.first_name }} {{ person.last_name }}</h2>
+
+<form action="details_update/{{ person.id }}" method="post">
+  <table class="table table-bordered mp-4">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Details</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Picture</th>
+        <td>
+          <img src="{{ person.picture }}" style="width: 15rem;">
+          <input class="form-control" type="text" name= "picture" value="{{ person.picture}}"></td>
+        </td>
+      </tr>
+      <tr>
+        <th>Application date</th>
+        <td>{{ person.date_of_completion }}</td>
+      </tr>
+      <tr>
+        <th>Applicant id</th>
+        <td>{{ person.id }}</td>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <td><input class="form-control" type="text" name="first_name" value="{{ person.first_name }}"></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><input class="form-control" type="text" name="last_name" value="{{ person.last_name }}"></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>
+          <select class="form-control" name="gender">
+            <option></option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          Currently: {{ person.gender }}</td>
+      </tr>
+      <tr>
+        <th>national id</th>
+        <td><input class="form-control" type="text" name="national_id" value="{{ person.national_id }}"></td>
+      </tr>
+      <tr>
+        <th>year of birth</th>
+        <td>{{ person.year_of_birth }}</td>
+      </tr>
+      <tr>
+        <th>address</th>
+        <td>{{ person.address }}</td>
+      </tr>
+      <tr>
+        <th>phone number</th>
+        <td>{{ person.phone_number }}</td>
+      </tr>
+      <tr>
+        <th>Education Level</th>
+        <td>{{ person.education_level }}</td>
+      </tr>
+      <tr>
+        <th>Education Field</th>
+        <td>{{ person.education_field }}</td>
+      </tr>
+      <tr>
+        <th>Experience</th>
+        <td>{{ person.experience }}</td>
+      </tr>
+      <tr>
+        <th>Interests</th>
+        <td>{{ person.interests }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-primary mb-2">Update Fields</button>
+</form>
+
+{% endblock %}

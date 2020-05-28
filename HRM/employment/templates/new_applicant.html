@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Creating a new Application</h2>
+
+<form action="new_applicant_update/{{ person.id }}" method="post">
+  <table class="table table-bordered mp-4">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Details</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>First Name</th>
+        <td><input class="form-control" type="text" name="first_name"></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><input class="form-control" type="text" name="last_name"></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>
+          <select class="form-control" name="gender">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>national id</th>
+        <td><input class="form-control" type="text" name="national_id"></td>
+      </tr>
+      <tr>
+        <th>year of birth</th>
+        <td><input class="form-control" type="text" name="year_of_birth"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-info mb-2">Create Application</button>
+</form>
+
+{% endblock %}
